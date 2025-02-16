@@ -1,14 +1,8 @@
-from flask import Flask, request, jsonify, render_template
-from flask_cors import CORS
+from flask import Flask, request, jsonify
 
 app = Flask(__name__)
-CORS(app)  # Cho phép CORS để tránh lỗi trên trình duyệt
 
-users = []  # Danh sách user lưu trong RAM
-
-@app.route('/home', methods=['GET'])
-def home():
-    return render_template("index.html")  # Giao diện chính
+users = []  # Danh sách user lưu trong RAM (tạm thời)
 
 @app.route('/users', methods=['POST'])
 def add_user():
@@ -21,7 +15,7 @@ def add_user():
 
 @app.route('/users', methods=['GET'])
 def get_users():
-    return jsonify(users)
+    return jsonify(users)  # Trả về danh sách user đã gửi
 
 if __name__ == '__main__':
     app.run(debug=True)
