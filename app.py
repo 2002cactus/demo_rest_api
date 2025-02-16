@@ -6,7 +6,7 @@ CORS(app)  # Cho phép CORS để tránh lỗi trên trình duyệt
 
 users = []  # Danh sách user lưu trong RAM
 
-@app.route('/')
+@app.route('/home')
 def home():
     return render_template("index.html")  # Giao diện chính
 
