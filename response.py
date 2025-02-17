@@ -1,10 +1,10 @@
 from flask import Flask, request, jsonify
 
-app = Flask(__name__)
+response = Flask(__name__)
 
 users = []  # Danh sách user lưu trong RAM (chỉ tồn tại trong quá trình chạy)
 
-@app.route('/users', methods=['POST'])
+@response.route('/users', methods=['POST'])
 def add_user():
     data = request.get_json()
     
@@ -15,9 +15,9 @@ def add_user():
     users.append(data)
     return jsonify({"message": "User added!", "user": data}), 201
 
-@app.route('/users', methods=['GET'])
+@response.route('/users', methods=['GET'])
 def get_users():
     return jsonify(users)  # Trả về danh sách user đã gửi
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    response.run(debug=True)
